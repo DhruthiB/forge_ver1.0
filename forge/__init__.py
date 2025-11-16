@@ -1,4 +1,4 @@
-VERSION = "5.0.0-dev"
+VERSION = "1.0.0-dev"
 PROJECT_NAME = "stylo-forge"
 FRAPPE_VERSION = None
 current_path = None
