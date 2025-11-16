@@ -22,7 +22,7 @@ jobs:
           python-version: '3.12'
       - uses: pre-commit/action@v3.0.0
         with:
-          extra_args: --files 'bench/'
+          extra_args: --files 'forge/'
 
   deps-vulnerable-check:
     name: 'Vulnerable Dependency Check'

@@ -1,0 +1,12 @@
+[Unit]
+Description="{{ forge_name }}-stylo-schedule"
+PartOf={{ forge_name }}-workers.target
+
+[Service]
+User={{ user }}
+Group={{ user }}
+Restart=always
+ExecStart={{ forge_cmd }} schedule
+StandardOutput=file:{{ forge_dir }}/logs/schedule.log
+StandardError=file:{{ forge_dir }}/logs/schedule.error.log
+WorkingDirectory={{ forge_dir }}

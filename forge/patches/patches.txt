@@ -1,0 +1,10 @@
+forge.patches.v3.deprecate_old_config
+forge.patches.v3.celery_to_rq
+forge.patches.v3.redis_bind_ip
+forge.patches.v4.update_node
+forge.patches.v4.update_socketio
+forge.patches.v4.install_yarn #2
+forge.patches.v5.fix_user_permissions
+forge.patches.v5.fix_backup_cronjob
+forge.patches.v5.set_live_reload_config
+forge.patches.v5.update_archived_sites

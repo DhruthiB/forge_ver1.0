@@ -1,0 +1,6 @@
+[Unit]
+After=network.target
+Wants={{ forge_name }}-stylo-web.service {{ forge_name }}-node-socketio.service
+
+[Install]
+WantedBy=multi-user.target

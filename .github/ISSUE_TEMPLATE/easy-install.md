@@ -1,6 +1,6 @@
 ---
 name: Easy Install
-about: Report a issue encountered or a suggestion for improving experience while using easy install to setup a "Bench + Frappe + ERPNext" environment
+about: Report a issue encountered or a suggestion for improving experience while using easy install to setup a "Forge + Stylo + ERPNext" environment
 labels: easy-install
 ---
 

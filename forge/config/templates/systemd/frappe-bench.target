@@ -1,0 +1,6 @@
+[Unit]
+After=network.target
+Requires={{ forge_name }}-web.target {{ forge_name }}-workers.target {{ forge_name }}-redis.target
+
+[Install]
+WantedBy=multi-user.target

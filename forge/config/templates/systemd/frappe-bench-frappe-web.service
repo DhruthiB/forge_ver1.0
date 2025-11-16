@@ -1,0 +1,12 @@
+[Unit]
+Description="{{ forge_name }}-stylo-web"
+PartOf={{ forge_name }}-web.target
+
+[Service]
+User={{ user }}
+Group={{ user }}
+Restart=always
+ExecStart={{ forge_dir }}/env/bin/gunicorn -b 127.0.0.1:{{ webserver_port }} -w {{ gunicorn_workers }} -t {{ http_timeout }} --max-requests {{ gunicorn_max_requests }} --max-requests-jitter {{ gunicorn_max_requests_jitter }} stylo.app:application --preload
+StandardOutput=file:{{ forge_dir }}/logs/web.log
+StandardError=file:{{ forge_dir }}/logs/web.error.log
+WorkingDirectory={{ sites_dir }}

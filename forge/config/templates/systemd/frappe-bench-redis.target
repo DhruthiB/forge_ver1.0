@@ -1,0 +1,6 @@
+[Unit]
+After=network.target
+Wants={{ forge_name }}-redis-cache.service {{ forge_name }}-redis-queue.service
+
+[Install]
+WantedBy=multi-user.target

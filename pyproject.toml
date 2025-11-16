@@ -1,11 +1,11 @@
 [project]
-name = "frappe-bench"
-description = "CLI to manage Multi-tenant deployments for Frappe apps"
+name = "stylo-forge"
+description = "CLI to manage Multi-tenant deployments for Stylo apps"
 readme = "README.md"
 license = "GPL-3.0-only"
 requires-python = ">=3.10"
 authors = [
-    { name = "Frappe Technologies Pvt Ltd", email = "developers@frappe.io" },
+    { name = "Stylo Technologies Pvt Ltd", email = "developers@stylo.io" },
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -35,13 +35,13 @@ dynamic = [
 ]
 
 [project.scripts]
-bench = "bench.cli:cli"
+forge = "forge.cli:cli"
 
 [project.urls]
-Changelog = "https://github.com/frappe/bench/releases"
-Documentation = "https://frappeframework.com/docs/user/en/bench"
-Homepage = "https://frappe.io/bench"
-Source = "https://github.com/frappe/bench"
+Changelog = "https://github.com/stylo/forge/releases"
+Documentation = "https://styloframework.com/docs/user/en/forge"
+Homepage = "https://stylo.io/forge"
+Source = "https://github.com/stylo/forge"
 
 [build-system]
 requires = [
@@ -50,14 +50,14 @@ requires = [
 build-backend = "hatchling.build"
 
 [tool.hatch.version]
-path = "bench/__init__.py"
+path = "forge/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-  "/bench"
+  "/forge"
 ]
 
 [tool.hatch.build.targets.wheel]
 include = [
-  "/bench"
+  "/forge"
 ]

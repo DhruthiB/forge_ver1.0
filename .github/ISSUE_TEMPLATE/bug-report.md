@@ -1,19 +1,19 @@
 ---
 name: Bug report
-about: Report a bug encountered while using bench
+about: Report a bug encountered while using forge
 labels: bug
 ---
 
 Issue: Bug report
 
-Please make sure your issue is reproducible on the latest bench version. The currently supported branches are:
- - PyPI [latest](https://pypi.org/project/frappe-bench/) 
+Please make sure your issue is reproducible on the latest forge version. The currently supported branches are:
+ - PyPI [latest](https://pypi.org/project/stylo-forge/) 
  - master         (minor bug fixes)
  - v5.x           (Merged with develop on every release)
  - develop        (all updates)
 
 **Do the checklist before filing an issue:**
- - [ ] Can you replicate the issue on the supported bench versions?
+ - [ ] Can you replicate the issue on the supported forge versions?
  - [ ] Is this something you can debug and fix? Send a pull request! Bug fixes and documentation fixes are welcome
 
 **Describe the bug** :chart_with_downwards_trend:
@@ -40,9 +40,9 @@ If applicable, add screenshots to help explain your problem.
 
 **Version Information**
 
-Can be found out by running `bench version` in your respective bench folder.
-- Bench Branch:
-- Frappe Version:
+Can be found out by running `forge version` in your respective forge folder.
+- Forge Branch:
+- Stylo Version:
 - ERPNext Version:
 
 **Additional context** :page_facing_up:

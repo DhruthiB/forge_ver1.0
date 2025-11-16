@@ -1,0 +1,82 @@
+---
+  - name: Check if /tmp/.forge exists
+    stat:
+      path: /tmp/.forge
+    register: tmp_forge
+
+  - name: Check if forge_repo_path exists
+    stat:
+      path: '{{ forge_repo_path }}'
+    register: forge_repo_register
+
+  - name: move /tmp/.forge if it exists
+    command: 'cp -R /tmp/.forge {{ forge_repo_path }}'
+    when: tmp_forge.stat.exists and not forge_repo_register.stat.exists
+
+  - name: install forge
+    pip:
+      name: '{{ forge_repo_path }}'
+      extra_args: '-e'
+    become: yes
+    become_user: root
+
+  - name: Overwrite forge if required
+    file:
+      state: absent
+      path: "{{ forge_path }}"
+    when: overwrite
+
+  - name: Check whether forge exists
+    stat:
+      path: "{{ forge_path }}"
+    register: forge_stat
+
+  - name: Fix permissions
+    become_user: root
+    command: chown {{ stylo_user }} -R {{ user_directory }}
+
+  - name:  python3 forge init for develop
+    command: forge init {{ forge_path }} --stylo-path {{ stylo_repo_url }} --stylo-branch {{ stylo_branch }} --python {{ python }}
+    args:
+      creates: "{{ forge_path }}"
+    when: not forge_stat.stat.exists and not production
+
+  - name: python3 forge init for production
+    command: forge init {{ forge_path }} --stylo-path {{ stylo_repo_url }} --stylo-branch {{ stylo_branch }} --python {{ python }}
+    args:
+      creates: "{{ forge_path }}"
+    when: not forge_stat.stat.exists and production
+
+  # setup common_site_config
+  - name: setup config
+    command: forge setup config
+    args:
+      creates: "{{ forge_path }}/sites/common_site_config.json"
+      chdir: "{{ forge_path }}"
+
+  - include_tasks: setup_inputrc.yml
+
+  # Setup Procfile
+  - name: Setup Procfile
+    command: forge setup procfile
+    args:
+      creates: "{{ forge_path }}/Procfile"
+      chdir: "{{ forge_path }}"
+
+  # Setup Redis env for RQ
+  - name: Setup Redis
+    command: forge setup redis
+    args:
+      creates: "{{ forge_path }}/config/redis_socketio.conf"
+      chdir: "{{ forge_path }}"
+
+  # Setup an ERPNext site
+  - include_tasks: setup_erpnext.yml
+    when: not run_travis
+
+  # Setup Forge for production environment
+  - include_tasks: setup_forge_production.yml
+    vars:
+      forge_path: "{{ user_directory }}/{{ forge_name }}"
+    when: not run_travis and production
+...

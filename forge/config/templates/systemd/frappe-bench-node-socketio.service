@@ -1,0 +1,13 @@
+[Unit]
+After={{ forge_name }}-stylo-web.service
+Description="{{ forge_name }}-node-socketio"
+PartOf={{ forge_name }}-web.target
+
+[Service]
+User={{ user }}
+Group={{ user }}
+Restart=always
+ExecStart={{ node }} {{ forge_dir }}/apps/stylo/socketio.js
+StandardOutput=file:{{ forge_dir }}/logs/node-socketio.log
+StandardError=file:{{ forge_dir }}/logs/node-socketio.error.log
+WorkingDirectory={{ forge_dir }}

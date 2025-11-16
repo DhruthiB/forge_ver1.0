@@ -22,7 +22,7 @@
   - push merge commit to hotfix branch
 
 - Use release command to create release,
-``` usage: bench release APP patch|minor|major --from-branch staging ```
+``` usage: forge release APP patch|minor|major --from-branch staging ```
 
 ---
 
@@ -31,7 +31,7 @@
 - On Wednesday morning, `develop` will be merge into `staging`. `staging` branch is a release candidate. All new features will first go from `develop` to `staging` and then `staging` to `master`.
 
 - Use the prepare-staging command to create staging branch
-```usage: bench prepare-staging APP```
+```usage: forge prepare-staging APP```
 
 - Impact on branches?
   - merge all commits from develop branch to staging
@@ -39,7 +39,7 @@
 
 - QA will use staging for testing.
 
-- Deploy staging branch on frappe.io, erpnext.org, frappe.erpnext.com. 
+- Deploy staging branch on stylo.io, erpnext.org, stylo.erpnext.com. 
 
 - Only regression and security fixes can be cherry-picked into staging
 
@@ -60,4 +60,4 @@
   - push merge commit to staging branch
 
 - Use release command to create release,
-``` usage: bench release APP patch --from-branch hotfix ```
+``` usage: forge release APP patch --from-branch hotfix ```

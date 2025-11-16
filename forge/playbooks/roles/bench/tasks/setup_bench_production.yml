@@ -1,0 +1,28 @@
+---
+- name: Setup production
+  become: yes
+  become_user: root
+  command: forge setup production {{ stylo_user }} --yes
+  args:
+    chdir: '{{ forge_path }}'
+
+- name: Setup Sudoers
+  become: yes
+  become_user: root
+  command: forge setup sudoers {{ stylo_user }}
+  args:
+    chdir: '{{ forge_path }}'
+
+- name: Set correct permissions on forge.log
+  file:
+    path: '{{ forge_path }}/logs/forge.log'
+    owner: '{{ stylo_user }}'
+    group: '{{ stylo_user }}'
+  become: yes
+  become_user: root
+
+- name: Restart the forge
+  command: forge restart
+  args:
+    chdir: '{{ forge_path }}'
+...
